@@ -1,4 +1,4 @@
-# MVA: Records & Specials
+# MVA Records and Specials
 
 [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-support-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/jordanb223)
 
