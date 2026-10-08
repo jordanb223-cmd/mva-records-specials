@@ -105,6 +105,13 @@ If a block has a YAML error, the plugin shows the error and does not write to th
 - Firm name, prepared-by name, and page size (Letter or A4) for reports
 - Case files folder, next to the case note (default `{case} files`)
 
+## Privacy and vault access
+
+- Everything stays on your device. The plugin makes no network requests, and PDFs are built locally.
+- The dashboard lists the notes in your vault to find the ones that contain `mva-requests` or `mva-specials` blocks. It reads only those notes.
+- The "Link vault file" picker lists PDFs and images in your vault so you can choose one.
+- The plugin writes only when you act: editing an entry, uploading a file, or building a PDF.
+
 ## Notice
 
 This plugin is a record-keeping tool. It does not contain jurisdiction-specific rules, deadlines, or fee limits. It does not give legal advice. The sample playbooks are generic starting points to adapt to your office's practice.

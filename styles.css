@@ -52,8 +52,10 @@
 	border-bottom: none;
 }
 
-.mva-num {
-	text-align: right !important;
+.mva-num,
+.mva-table th.mva-num,
+.mva-table td.mva-num {
+	text-align: right;
 	font-variant-numeric: tabular-nums;
 	white-space: nowrap;
 }
@@ -62,9 +64,10 @@
 	font-weight: var(--font-semibold);
 }
 
-.mva-actions {
+.mva-actions,
+.mva-table td.mva-actions {
 	white-space: nowrap;
-	text-align: right !important;
+	text-align: right;
 }
 
 .mva-icon-btn {
