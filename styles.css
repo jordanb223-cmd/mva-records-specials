@@ -1,0 +1,322 @@
+.mva-block {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	padding: var(--size-4-3);
+	margin: var(--size-4-2) 0;
+}
+
+.mva-block-head {
+	display: flex;
+	align-items: baseline;
+	gap: var(--size-4-2);
+	margin-bottom: var(--size-4-2);
+}
+
+.mva-block-title {
+	font-weight: var(--font-semibold);
+}
+
+.mva-block-sub,
+.mva-note,
+.mva-card-meta {
+	color: var(--text-muted);
+	font-size: var(--font-ui-smaller);
+}
+
+.mva-table-wrap {
+	overflow-x: auto;
+}
+
+.mva-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: var(--font-ui-small);
+}
+
+.mva-table th,
+.mva-table td {
+	padding: var(--size-4-1) var(--size-4-2);
+	border-bottom: 1px solid var(--background-modifier-border);
+	text-align: left;
+	vertical-align: top;
+}
+
+.mva-table th {
+	color: var(--text-muted);
+	font-weight: var(--font-medium);
+	white-space: nowrap;
+}
+
+.mva-table tfoot td {
+	font-weight: var(--font-semibold);
+	border-bottom: none;
+}
+
+.mva-num {
+	text-align: right !important;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.mva-strong {
+	font-weight: var(--font-semibold);
+}
+
+.mva-actions {
+	white-space: nowrap;
+	text-align: right !important;
+}
+
+.mva-icon-btn {
+	display: inline-flex;
+	padding: var(--size-2-1);
+}
+
+.mva-row-complete,
+.mva-row-excluded {
+	opacity: 0.65;
+}
+
+.mva-pill {
+	display: inline-block;
+	padding: 0 var(--size-4-2);
+	border-radius: var(--radius-l);
+	font-size: var(--font-ui-smaller);
+	white-space: nowrap;
+	background-color: var(--background-modifier-hover);
+}
+
+.mva-pill-overdue {
+	background-color: rgba(var(--color-red-rgb), 0.2);
+	color: var(--color-red);
+}
+
+.mva-pill-due-today {
+	background-color: rgba(var(--color-orange-rgb), 0.2);
+	color: var(--color-orange);
+}
+
+.mva-pill-complete,
+.mva-rel-yes {
+	background-color: rgba(var(--color-green-rgb), 0.2);
+	color: var(--color-green);
+}
+
+.mva-add {
+	margin-top: var(--size-4-2);
+}
+
+.mva-error {
+	color: var(--text-error);
+	padding: var(--size-4-2);
+	border: 1px solid var(--background-modifier-error);
+	border-radius: var(--radius-s);
+	margin: var(--size-4-2) 0;
+}
+
+.mva-dashboard h4 {
+	margin: var(--size-4-4) 0 var(--size-4-2);
+}
+
+.mva-dash-bar {
+	display: flex;
+	gap: var(--size-4-1);
+	align-items: center;
+}
+
+.mva-dash-bar .clickable-icon {
+	margin-left: auto;
+}
+
+.mva-dash-list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-4-2);
+}
+
+.mva-card {
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	padding: var(--size-4-2) var(--size-4-3);
+}
+
+.mva-card.mva-row-overdue {
+	border-left: 3px solid var(--color-red);
+}
+
+.mva-card-top {
+	display: flex;
+	gap: var(--size-4-2);
+	align-items: center;
+}
+
+.mva-card-provider {
+	font-weight: var(--font-semibold);
+}
+
+.mva-card-actions {
+	display: flex;
+	gap: var(--size-4-1);
+	margin-top: var(--size-4-2);
+}
+
+.mva-empty {
+	color: var(--text-muted);
+	padding: var(--size-4-2) 0;
+}
+
+.mva-pill-partial,
+.mva-rel-unknown {
+	background-color: rgba(var(--color-yellow-rgb), 0.25);
+	color: var(--text-normal);
+}
+
+.mva-rel-no {
+	background-color: var(--background-modifier-hover);
+	color: var(--text-muted);
+}
+
+.mva-card.mva-row-partial {
+	border-left: 3px solid var(--color-yellow);
+}
+
+.mva-missing {
+	margin: var(--size-2-1) 0 0;
+	padding-left: var(--size-4-5);
+	font-size: var(--font-ui-smaller);
+	color: var(--text-error);
+}
+
+.mva-have {
+	color: var(--text-success);
+	font-size: var(--font-ui-smaller);
+}
+
+.mva-lack {
+	color: var(--text-faint);
+	font-size: var(--font-ui-smaller);
+}
+
+.mva-table td.mva-nowrap,
+.mva-nowrap {
+	white-space: nowrap;
+}
+
+.mva-table tfoot tr.mva-total-main td {
+	border-top: 2px solid var(--background-modifier-border);
+}
+
+.mva-table td .mva-pill + .mva-pill,
+.mva-table td div + .mva-pill {
+	margin-top: var(--size-2-1);
+}
+
+.mva-checklist {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--size-2-2);
+}
+
+.mva-check {
+	display: flex;
+	align-items: center;
+	gap: var(--size-2-3);
+	font-size: var(--font-ui-small);
+}
+
+.mva-hidden {
+	display: none;
+}
+
+.mva-card-top .mva-card-provider {
+	flex: 1;
+}
+
+.mva-card-icons {
+	display: flex;
+	margin-left: auto;
+}
+
+.mva-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--size-2-2);
+	margin: var(--size-2-1) 0;
+}
+
+.mva-italic {
+	font-style: italic;
+}
+
+.mva-block .mva-dash-list .mva-card-meta {
+	margin-top: var(--size-2-1);
+}
+
+.mva-block-buttons {
+	display: flex;
+	gap: var(--size-4-2);
+}
+
+.mva-attach-editor {
+	padding: var(--size-4-3) 0;
+	border-top: 1px solid var(--background-modifier-border);
+}
+
+.mva-attach-rows {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-2-2);
+	margin: var(--size-4-2) 0;
+}
+
+.mva-attach-row {
+	display: flex;
+	align-items: center;
+	gap: var(--size-4-2);
+}
+
+.mva-attach-name {
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mva-attach-buttons {
+	display: flex;
+	gap: var(--size-4-2);
+}
+
+.mva-attach-links {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--size-2-1);
+	margin-top: var(--size-2-2);
+	font-size: var(--font-ui-smaller);
+}
+
+.mva-attach-clip {
+	display: inline-flex;
+	color: var(--text-muted);
+}
+
+.mva-attach-clip svg {
+	width: 12px;
+	height: 12px;
+}
+
+.mva-excluded-link {
+	color: var(--text-muted);
+	text-decoration: line-through;
+}
+
+.mva-support {
+	margin-top: var(--size-4-8);
+	padding-top: var(--size-4-3);
+	border-top: 1px solid var(--background-modifier-border);
+	color: var(--text-muted);
+	font-size: var(--font-ui-small);
+}

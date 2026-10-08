@@ -1,0 +1,8 @@
+node_modules/
+main.js
+*.map
+data.json
+.DS_Store
+test-vault/.obsidian/plugins/
+test-vault/.obsidian/workspace.json
+test-vault/.obsidian/workspace-mobile.json

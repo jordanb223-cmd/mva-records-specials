@@ -1,0 +1,10 @@
+{
+  "id": "mva-records-specials",
+  "name": "MVA: Records & Specials",
+  "version": "0.1.0",
+  "minAppVersion": "1.7.2",
+  "description": "Track medical records requests, billing specials, and records-retrieval playbooks for motor vehicle accident cases.",
+  "author": "Jordan Brown",
+  "isDesktopOnly": false,
+  "fundingUrl": "https://buymeacoffee.com/jordanb223"
+}
