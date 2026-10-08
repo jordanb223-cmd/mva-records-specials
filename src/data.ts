@@ -1,22 +1,40 @@
-import { moment, parseYaml, stringifyYaml } from "obsidian";
+import { parseYaml, stringifyYaml } from "obsidian";
 import { Attachment, Encounter, ReceiptState, RecordRequest, Relatedness, RequestStatus } from "./types";
 
 export function newId(): string {
 	return Math.random().toString(36).slice(2, 8);
 }
 
+// Dates are stored as "YYYY-MM-DD" strings and handled as local calendar days.
+
+const pad = (n: number) => String(n).padStart(2, "0");
+
+function isoOf(d: Date): string {
+	return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+}
+
+/** Parses a strict "YYYY-MM-DD" string as a local date, or returns null. */
+function parseIso(date: string): Date | null {
+	const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+	if (!m) return null;
+	const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+	return d.getMonth() === Number(m[2]) - 1 && d.getDate() === Number(m[3]) ? d : null;
+}
+
 export function today(): string {
-	return moment().format("YYYY-MM-DD");
+	return isoOf(new Date());
 }
 
 export function addDays(date: string, days: number): string {
-	const base = date ? moment(date, "YYYY-MM-DD") : moment();
-	return base.add(days, "days").format("YYYY-MM-DD");
+	const base = (date && parseIso(date)) || new Date();
+	base.setDate(base.getDate() + days);
+	return isoOf(base);
 }
 
 function str(value: unknown): string {
 	if (value === null || value === undefined) return "";
-	if (value instanceof Date) return moment(value).utc().format("YYYY-MM-DD");
+	// YAML reads an unquoted 2026-02-10 as midnight UTC.
+	if (value instanceof Date) return `${value.getUTCFullYear()}-${pad(value.getUTCMonth() + 1)}-${pad(value.getUTCDate())}`;
 	if (typeof value === "string") return value.trim();
 	if (typeof value === "number" || typeof value === "boolean") return String(value);
 	// Nested maps or lists where a plain value belongs are dropped rather than printed as "[object Object]".
@@ -298,16 +316,24 @@ export function formatMoney(value: number | null, currency: string): string {
 	}
 }
 
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+/** "Feb 10, 2026". Anything that is not a valid YYYY-MM-DD date is shown as typed. */
 export function formatDate(date: string): string {
-	if (!date) return "";
-	const m = moment(date, "YYYY-MM-DD", true);
-	return m.isValid() ? m.format("MMM D, YYYY") : date;
+	const d = parseIso(date);
+	return d ? `${MONTHS[d.getMonth()].slice(0, 3)} ${d.getDate()}, ${d.getFullYear()}` : date;
 }
 
+/** "February 10, 2026". */
+export function formatLongDate(date: string): string {
+	const d = parseIso(date);
+	return d ? `${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}` : date;
+}
+
+/** "02/10/2026". */
 export function formatShortDate(date: string): string {
-	if (!date) return "";
-	const m = moment(date, "YYYY-MM-DD", true);
-	return m.isValid() ? m.format("MM/DD/YYYY") : date;
+	const d = parseIso(date);
+	return d ? `${pad(d.getMonth() + 1)}/${pad(d.getDate())}/${d.getFullYear()}` : date;
 }
 
 // ---------- Locating blocks inside a note ----------

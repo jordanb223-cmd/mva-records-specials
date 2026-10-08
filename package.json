@@ -1,6 +1,6 @@
 {
   "name": "mva-records-specials",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Track medical records requests, billing specials, and records-retrieval playbooks for motor vehicle accident cases.",
   "main": "main.js",
   "scripts": {

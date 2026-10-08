@@ -1,10 +1,11 @@
-import { App, Modal, moment, Notice, Setting, TFile } from "obsidian";
+import { App, Modal, Notice, Setting, TFile } from "obsidian";
 import { caseFolder, ensureFolder, fileName, freePath } from "./attachments";
 import type { CaseData } from "./dashboard";
 import {
 	balance,
 	dueDate,
 	formatDate,
+	formatLongDate,
 	formatMoney,
 	formatShortDate,
 	GAP_LABEL,
@@ -72,7 +73,7 @@ function header(w: PdfWriter, settings: MvaSettings, info: CaseInfo, title: stri
 		["Case", info.client],
 		["Date of incident", info.doi ? formatShortDate(info.doi) : ""],
 		["Prepared by", settings.preparedBy],
-		["Date", moment().format("MMMM D, YYYY")],
+		["Date", formatLongDate(today())],
 	]);
 	w.rule();
 	w.space(6);
@@ -112,7 +113,7 @@ const hasReceipt = (list: Attachment[]) => list.some((a) => a.kind === "Receipt"
 export async function buildCaseReport(app: App, settings: MvaSettings, c: CaseData, opts: ReportOptions): Promise<{ bytes: Uint8Array; problems: string[] }> {
 	const info = caseInfo(app, c);
 	const m = money(settings);
-	const w = await PdfWriter.create(settings.pageSize, `${info.client} - ${opts.title} - ${moment().format("MM/DD/YYYY")}`);
+	const w = await PdfWriter.create(settings.pageSize, `${info.client} - ${opts.title} - ${formatShortDate(today())}`);
 	const has = (k: SectionKey) => opts.sections.includes(k);
 	header(w, settings, info, opts.title, opts.privileged);
 
@@ -310,7 +311,7 @@ export async function saveAndOpen(app: App, settings: MvaSettings, caseFile: TFi
 	const folder = `${caseFolder(settings, caseFile)}/Reports`;
 	await ensureFolder(app, folder);
 	const safe = title.replace(/[\\/:*?"<>|#^[\]]/g, "-");
-	const path = freePath(app, folder, `${moment().format("YYYY-MM-DD")} ${safe}.pdf`);
+	const path = freePath(app, folder, `${today()} ${safe}.pdf`);
 	const bytes = built.bytes;
 	const created = await app.vault.createBinary(path, bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) as ArrayBuffer);
 	await app.workspace.getLeaf("tab").openFile(created);
